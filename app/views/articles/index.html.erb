@@ -1,5 +1,9 @@
 <h1> Index Page </h1>
---<table class="table">
+
+<% flash.each do |name, msg| %>
+      <%= msg %>
+<% end %>
+<table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -13,8 +17,18 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
-        <td>Placeholder</td>
+        <td><%= link_to 'Show', article_path(article) %></td>
+        <td><%= link_to 'Edit', edit_article_path(article) %></td>
+        <!--can also say article_path(article) - rails can automatically figure that its the id property that needs to passed-->
+        <!--both show and delete http methods have the url format of article/id. In order to differentiate, we have to -->
+        <!--specify method: :delete-->
+        <!--the followign line only generates the html and links (http requests)-->
+        <!--the actual action will be effected via the routes.rb -> controller actions destroy-->
+        <td><%= button_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td> 
       </tr>
     <% end %>
   </tbody>
+  <p>
+  <td><%= link_to 'Create Article', new_article_path %></td>
+  </p>
 </table>

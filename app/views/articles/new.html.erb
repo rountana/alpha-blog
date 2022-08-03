@@ -1,0 +1,33 @@
+<h1> New Article create page</h1>
+
+<% if @article.errors.any? %>
+    <h2>Please fix the following errors</h2>
+    <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<!--#scope is model name-->
+<!--#url is rails articles path-->
+<!--#local : true -> post using std http post request, inplace of remote AJAX. With form_for the default is std http-->
+<%= form_with scope: :article, url: articles_path, local: true do |f| %>
+    <p>
+         <!--# std text input field field-->
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :description %>
+        <!--#text_area gives a larger input box.. expandable in size-->
+        <%=f.text_area :description%>
+    </p
+    
+    <p>
+        <!--#submit button-->
+        <%= f.submit %>
+    </p>
+<% end %>
+
+<%= link_to 'Return to articles listing', articles_path %>
