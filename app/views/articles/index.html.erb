@@ -1,35 +1,70 @@
+<div id="page-content">
+<h1 class="text-center mt-4"> Listing all articles </h1>
 
-<h1> Index Page </h1>
+<div class="container">
+  <% @articles.each do |article| %>
+  <!-- Convert index table to Card style display  -->
+  <!--note justify-content-center.. this brings the left justified card to the centre of the screen-->
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <div class="card text-center shadow mb-5 bg-body rounded" id="article-card">
+        <div class="card-header font-italic">
+          by Shaama
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-success"><%= link_to article.title, article_path(article) %></h5>
+          <p class="card-text"><%= truncate(article.description, length: 15) %></p>
+          <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+          <!--<a href="#" class="btn btn-outline-success">Go somewhere</a>-->
+          <!--<a href="#" class="btn btn-outline-danger">Go somewhere</a>-->
 
-<% flash.each do |name, msg| %>
-      <%= msg %>
-<% end %>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= link_to 'Show', article_path(article) %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
+          <!--<div id=button-div><%= button_to "Show", article_path(article), class: "btn btn-outline-success",form_class: "myButton" %> </div>-->
+          <!--<div id=button-div><%= button_to "Edit", edit_article_path(article), class: "btn btn-outline-info", form_class: "myButton"%> </div>-->
+          <!--<div id=button-div><%= button_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: { confirm: "Are you sure?", form_class: "myButton" } %></div>-->
+          <div class="text-center"> 
+            <div  id=button-div style="float: left; width: auto;"><%= link_to "Show", article_path(article), class: "btn btn-outline-success" %> </div>
+            <div id=button-div style="float: left; width: auto;"><%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info"%> </div>
+            <div id=button-div style="float: left; width: auto;"><%= button_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: { confirm: "Are you sure?" } %></div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <small> Created <%= time_ago_in_words(article.created_at) %> ago, 
+          Edited <%=time_ago_in_words(article.updated_at) %> </small>
+      
+</div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
+
+<!--<table class="table">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th scope="col">#</th>-->
+<!--      <th scope="col">Title</th>-->
+<!--      <th scope="col">Description</th>-->
+<!--      <th scope="col">Actions</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    <% @articles.each do |article| %>-->
+<!--      <tr>-->
+<!--        <td><%= article.title %></td>-->
+<!--        <td><%= article.description %></td>-->
+<!--        <td><%= link_to 'Show', article_path(article) %></td>-->
+<!--        <td><%= link_to 'Edit', edit_article_path(article) %></td>-->
         <!--can also say article_path(article) - rails can automatically figure that its the id property that needs to passed-->
         <!--both show and delete http methods have the url format of article/id. In order to differentiate, we have to -->
         <!--specify method: :delete-->
         <!--the followign line only generates the html and links (http requests)-->
         <!--the actual action will be effected via the routes.rb -> controller actions destroy-->
-        <td><%= button_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td> 
-      </tr>
-    <% end %>
-  </tbody>
-  <p>
-  <td><%= link_to 'Create Article', new_article_path %></td>
-  </p>
-</table>
+<!--        <td><%= button_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td> -->
+<!--      </tr>-->
+<!--    <% end %>-->
+<!--  </tbody>-->
+<!--  <p>-->
+<!--  <td><%= link_to 'Create Article', new_article_path, class:"text-white" %></td>-->
+<!--  </p>-->
+<!--</table>-->

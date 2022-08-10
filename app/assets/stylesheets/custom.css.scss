@@ -1,11 +1,20 @@
 @import 'bootstrap/dist/css/bootstrap';
 
-.navbar {
-    background-color: black !important;
+.myButton {
+  display: inline !important;
 }
 
-.nav-link {
-    color: white !important;
+
+#jumbotron-card{
+      background-image: asset-url(backsplash);
+}
+
+.card {
+    margin: 20px;
+    background-color: lightblue !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #logo {
@@ -15,4 +24,29 @@
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight:bold;
+}
+
+.navbar {
+    background-color: black !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
+}
+
+/* Other Classes for Page Styling */
+
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
 }

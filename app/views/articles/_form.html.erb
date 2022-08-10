@@ -1,0 +1,43 @@
+<!--Clone from new.html.erb-->
+<% if @article.errors.any? %>
+    <h2>Please fix the following errors</h2>
+    <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+    <!--Format passes the object inside the fields of the form instead of send a blank form-->
+    <!--this will also submit the form to the update action -> call the update URL-->
+    <!--#local : true -> post using std http post request, inplace of remote AJAX. With form_for the default is std http-->
+    <!-- OLD :: form_with scope: :article, url: articles_path, local: true do |f|-->
+
+    <%= form_with(model: @article, local: true) do |f| %>
+
+    <div class="row g-3 align-items-center">
+        <div class="row form-group">
+             <!--# std text input field field-->
+             
+            <%= f.label :title, class: " col-form-label"  %>
+            <%= f.text_field :title, class: "col-form-control" %>
+        </div>
+        <div class= "row form-group">
+        <%= f.label :description, class: "col-form-label" %>
+        <!--#text_area gives a larger input box.. expandable in size-->
+        <%= f.text_area :description, rows:10, class: "col-form-control" %>
+        </div>
+        <div class='col-8'>
+            <span class="form-text">
+              Max 100 characters limt
+            </span>
+        </div>
+
+        <div class="md-3">
+            <!--#submit button-->
+            <!--button would have "update article" text automatically handled by rails-->
+            <!--submit button doesnt need a , after submit-->
+            <%= f.submit class:"btn btn-outline-info" %>
+        </div>
+    </div>
+    <% end %>

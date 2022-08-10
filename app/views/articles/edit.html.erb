@@ -1,39 +1,6 @@
-<h1> Article EDIT page</h1>
-
-<!--Clone from new.html.erb-->
-<% if @article.errors.any? %>
-    <h2>Please fix the following errors</h2>
-    <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-    <% end %>
-    </ul>
-<% end %>
-
-<!--#scope is model name-->
-<!--#url is rails articles path-->
-<!--#local : true -> post using std http post request, inplace of remote AJAX. With form_for the default is std http-->
+<div id="page-content">
+    <h1 class="text-center mt-4"> Edit article </h1>
     
-    <!--Format passes the object inside the fields of the form instead of send a blank form-->
-    <!--this will also submit the form to the update action -> call the update URL-->
-    <!-- OLD :: form_with scope: :article, url: articles_path, local: true do |f|-->
-
-    <%= form_with(model: @article, local: true) do |f| %>
-
-    <p>
-         <!--# std text input field field-->
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </p>
+    <%= render 'articles/form' %>
     
-    <p>
-        <%= f.label :description %>
-        <!--#text_area gives a larger input box.. expandable in size-->
-        <%= f.text_area :description%>
-    </p
-    
-    <p>
-        <!--#submit button-->
-        <%= f.submit %>
-    </p>
-    <% end %>
+</div>
