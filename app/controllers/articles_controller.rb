@@ -32,7 +32,6 @@ class ArticlesController < ApplicationController
    @article = Article.new(params.require(:article).permit(:title, :description))   
    # render plan: @article # displays object address
    # render plan: @article.inspect # displays the object contents
-   
       if @article.save
       # after the article was create, take the following action.
          flash[:notice] = "Article saved !"
