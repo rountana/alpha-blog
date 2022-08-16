@@ -1,0 +1,39 @@
+
+    <div class = "col-10"
+        <!--<%= render 'shared/errors', obj: @user %>-->
+        <!--Format passes the object inside the fields of the form instead of send a blank form-->
+        <!--this will also submit the form to the update action -> call the update URL-->
+        <!--#local : true -> post using std http post request, inplace of remote AJAX. With form_for the default is std http-->
+        <!--@ user is the form submission path-->
+        <%= form_with(model: @user, local: true) do |f| %>
+    
+        <div class="shadow g-3 align-items-center">
+            <div class="row form-group">
+                 <!--# std text input field field-->
+                 
+                <%= f.label :username, class: " col-form-label"  %>
+                <%= f.text_field :username, class: "col-form-control", placeholder: "Enter username" %>
+            </div>
+            <div class= "row form-group">
+            <%= f.label :email, class: "col-form-label" %>
+            <!--#text_area gives a larger input box.. expandable in size-->
+            <%= f.text_area :email, class: "col-form-control", placeholder: "Enter email id" %>
+            </div>
+                 <div class= "row form-group">
+                <%= f.label :password, class: "col-form-label" %>
+                <%= f.text_area :password, class: "col-form-control", placeholder: "Choose a password" %>
+            </div>
+    
+            <div class="md-3">
+                <!--#submit button-->
+                <!--button would have "update article" text automatically handled by rails-->
+                <!--submit button doesnt need a , after submit-->
+                <%#= f.submit "Sign up", class: "btn btn-outline-info" %>
+                <!--old format above always displays sign up/ since this is a common form, we want to customize the -->
+                <!--button based on the record being updated-->
+                <%= f.submit(@user.new_record? ? "Sign up" : "Update Profile", class: "btn btn-outline-info") %>
+
+            </div>
+        </div>
+        <% end %>
+    </div>

@@ -1,12 +1,7 @@
 <!--Clone from new.html.erb-->
-<% if @article.errors.any? %>
-    <h2>Please fix the following errors</h2>
-    <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-    <% end %>
-    </ul>
-<% end %>
+    <!--obj is a generic system variable to which we can pass an object-->
+        <!--<%= render 'shared/errors', obj: @article %>-->
+
 
     <!--Format passes the object inside the fields of the form instead of send a blank form-->
     <!--this will also submit the form to the update action -> call the update URL-->
@@ -15,7 +10,7 @@
 
     <%= form_with(model: @article, local: true) do |f| %>
 
-    <div class="row g-3 align-items-center">
+    <div class="row g-3 align-items-center" id="edit-form">
         <div class="row form-group">
              <!--# std text input field field-->
              

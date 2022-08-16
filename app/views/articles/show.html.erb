@@ -1,10 +1,15 @@
 <div id="page-content">
     <h1 class="text-center mt-4"> Display article </h1>
-    <p> <strong> ID : </strong> <%= @article.id%></p>
-    <p> <strong>Title : </strong> <%= @article.title %> </p>
-    <p> <strong>Description : </strong> <%= @article.description%></p>
-    
-    <%= link_to 'Edit', edit_article_path(@article) %>
-    <%= button_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
-    <%= link_to 'Return to articles listing', articles_path %>
+    <div class=container>
+        <p> <strong> ID : </strong> <%= @article.id%></p>
+        <p> <strong>Title : </strong> <%= @article.title %> </p>
+        <p> <strong>Description : </strong> <%= @article.description%></p>
+        <div class="d-grid gap-2 d-md-block">
+            <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-primary"  %>
+            <%= link_to 'Delete', article_path(@article),  class: "btn btn-outline-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+        <br> </br>
+        <%= link_to 'Return to articles listing', articles_path, class: "btn btn-outline-success" %>
+        <br> </br>
+    </div>
 </div>
