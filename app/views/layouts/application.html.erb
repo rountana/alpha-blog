@@ -11,13 +11,13 @@
 
   </head>
 
-  <body>
-    <header>
+  <body class="d-flex flex-column">
       <%= render 'layouts/navbar' %>
-    </header>
-    <% flash.each do |name, msg| %>
-      <%= msg %>
-    <% end %>
-    <%= yield %>
+    <div id="page-content", class="alert alert-info">
+      <% flash.each do |name, msg| %>
+        <%= msg %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

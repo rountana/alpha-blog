@@ -5,7 +5,10 @@ class ArticlesController < ApplicationController
    end
    
    def index
-      @articles = Article.all
+      # pre-pagination code
+      # @articles = Article.all
+      @articles = Article.paginate(page: params[:page], per_page: 4)
+
    end    
    
    def new
@@ -29,7 +32,9 @@ class ArticlesController < ApplicationController
    #render plain: params[:article]
    # similar way to specify params article doesnt work with Article.new, cos article has to be whitelisted for such use
    # the way to do that is as below.
-   @article = Article.new(params.require(:article).permit(:title, :description))   
+   @article = Article.new(params.require(:article).permit(:title, :description)) 
+   @article.user = User.first # <--- Hardcoded user
+
    # render plan: @article # displays object address
    # render plan: @article.inspect # displays the object contents
       if @article.save

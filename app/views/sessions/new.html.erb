@@ -1,0 +1,27 @@
+ <h1 class="text-center mt-4">  </h1>
+ <h1 class="text-center mt-4"> Log in</h1>
+  <div class="container">
+      <div class= " row justify-content-center", id="login-button" >
+        <div class = "col-10"> 
+ 
+        <!--we are using scope and url to handle user sessions-->
+        <%= form_with(scope: :session, url: login_path, class: "shadow g-3 align-items-center", local: true) do |f| %>
+    
+            <div class="mb-3 col-md-6">                 <!--# std text input field field-->
+            <!--#text_area gives a larger input box.. expandable in size-->
+            <%= f.email_field :email, class: "position-relative top-50 start-50 form-control", placeholder:"name@example.com" %>
+            <!--<label for="floatingInput" class="top-50 start-50">  Enter Username </label>-->
+
+            </div>
+            <div class=" mb-3 col-md-6">                 <!--# std text input field field-->
+                <%= f.password_field :password, class: "position-relative top-50 start-50 form-control", placeholder:"Password" %>
+                 <!--<label for="floatingInput" class="top-50 start-50">  Enter Password </label>-->
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <%= f.submit "Log in", class: " position-relative top-50 start-50 form-control btn btn-outline-info" %>
+                <br></br>
+            </div>
+        <% end %>
+        </div>
+      </div>
+    </div>

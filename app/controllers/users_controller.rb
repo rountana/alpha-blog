@@ -1,5 +1,20 @@
 class UsersController < ApplicationController
     
+    def show
+        @user = User.find(params[:id])
+        
+        # instance variable @article to be used in paginate ruby instruction in .html.erb
+        @articles = @user.articles.paginate(page: params[:page], per_page: 5)
+        if @articles.blank?
+            flash[:notice] = "No articles exist for user"
+        end
+    end
+    
+    def index
+    #   @users = User.all
+        @users = User.paginate(page: params[:page], per_page: 5)
+    end
+    
     def new
         @user = User.new
     end
@@ -42,8 +57,8 @@ class UsersController < ApplicationController
         # note update is different from save
         if @user.update(user_params)
             flash[:notice] = "Successfully updated profile"
-            #route to articles home page after login
-            redirect_to articles_path
+            #route to user page after login.. @user is same as specifying user_path(user)
+            redirect_to @user
             
             #below did not work
             # @article = Article.all

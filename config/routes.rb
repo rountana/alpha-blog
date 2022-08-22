@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   get "signup" => "users#new"
   # post "users" => 'users#create'
   resources:users, except: [:new]
+  #for login resources are not possible, create path manually
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get "logout", to: 'sessions#destroy'
+ # delete "logout" => 'sessions#destroy'
 end

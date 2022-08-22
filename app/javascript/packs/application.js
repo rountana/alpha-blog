@@ -19,3 +19,7 @@ require("channels")
 import 'bootstrap/dist/js/bootstrap'
 import "bootstrap/dist/css/bootstrap";
 import "../stylesheets/application"
+
+/// added to address error where DELETE request gets converted to GET method
+import "jquery_ujs"
+import "rails_ujs"

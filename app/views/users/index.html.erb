@@ -1,0 +1,41 @@
+
+<div class="container">
+    <h1 class="text-center mt-4"> Users </h1>
+    <div class="flickr_pagination">
+        <%= will_paginate @users, :container => false %>
+    </div>
+    
+  <% @users.each do |user| %>
+  <!-- Convert index table to Card style display  -->
+  <!--note justify-content-center.. this brings the left justified card to the centre of the screen-->
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <div class="card text-center shadow mb-5 bg-body rounded" id="article-card">
+        <div class="card-header font-italic">
+            <!--can also write path like so.. common paths like "show" are deciphered by rails -->
+            <!-- <p <%#= link_to user.username, user %> </p> -->
+            <p <%= link_to user.username, user_path(user) %> </p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-success">
+            <!--create a link for the profile pic.. to take to show page-->
+            <%= link_to gravatar_for(user, size: 100), user %>
+          </h5>
+          <p class="card-text"><%= link_to pluralize(user.articles.count, "article"), articles_path %></p>
+        <div class="container" id="button-container"> 
+            <%= link_to "View Profile", user_path(user), class: "btn btn-outline-success",form_class: "myButton" %> 
+            <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-info", form_class: "myButton"%> 
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+          <small> Joined <%= time_ago_in_words(user.created_at) %> ago, 
+          </small>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<div class="flickr_pagination">
+        <%= will_paginate @users, :container => false %>
+</div>
+</div>
