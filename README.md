@@ -1,25 +1,14 @@
 # README
 
+Learning project to build a basic Blogging application with minimum features:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* User authentication
+* CRUD operations
+* Session management
+* Profile management
+* User restricted actions
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ENVIRONMENT
+Amazon Cloud 9 IDE
+Rails 6
